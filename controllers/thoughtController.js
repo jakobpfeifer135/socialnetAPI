@@ -27,22 +27,22 @@ module.exports = {
     },
     async create(req, res) {
         try {
-          const { thoughtText, username } = req.body;
+          const dbThought = await Thought.create(req.body);
       
           // Validation
-          if (!thoughtText || !username) {
-            return res.status(400).json({ message: 'ThoughtText and username are required.' });
-          }
+          // if (!thoughtText || !username) {
+          //   return res.status(400).json({ message: 'ThoughtText and username are required.' });
+          // }
       
-          const newThought = new Thought({
-            thoughtText,
-            username,
-          });
+          // const newThought = new Thought({
+          //   thoughtText,
+          //   username,
+          // });
       
-          const savedThought = await newThought.save();
+          // const savedThought = await newThought.save();
           const user = await User.findOneAndUpdate(
-            { username },
-            { $push: { thoughts: savedThought._id } },
+            { _id: req.body.userId },
+            { $push: { thoughts: dbThought._id } },
             { new: true }
           );
       
@@ -50,7 +50,7 @@ module.exports = {
             return res.status(400).json({ message: 'No user with that ID!' });
           }
       
-          res.status(201).json(savedThought); // 201 Created status code
+          res.status(201).json(dbThought); // 201 Created status code
         } catch (err) {
           console.error(err);
           res.status(500).json(err);
