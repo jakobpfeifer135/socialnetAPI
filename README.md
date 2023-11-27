@@ -24,6 +24,7 @@ i learned so much about keeping user data ready to use on a social media like ap
 
 follow my github link or deployed link to access the rest of my work both future and past. here is the deployed link going along side this project!:<br/>
 https://github.com/jakobpfeifer135 - Check me out! <br/>
+To start this program simply run (npm run start!) <br/>
 https://drive.google.com/file/d/1kPftz_W6XxGp9C3K1tg74rTM5dYBn7z2/view  - My matching video!
 
 
